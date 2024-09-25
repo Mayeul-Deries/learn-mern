@@ -21,7 +21,7 @@ import {
   ModalFooter,
   Button,
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useProductStore } from '../store/product'
 
 const ProductCard = ({ product }: { product: any }) => {

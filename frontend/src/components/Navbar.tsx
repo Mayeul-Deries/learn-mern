@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Flex, Text, HStack, Button, useColorMode } from '@chakra-ui/react'
 import { PlusSquareIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
