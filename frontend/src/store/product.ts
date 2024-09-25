@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
 interface Product {
+  _id?: string
   name: string
   price: string
   description: string
@@ -11,6 +12,8 @@ interface ProductStore {
   products: Product[]
   setProducts: (products: Product[]) => void
   createProduct: (newProduct: Product) => Promise<{ success: boolean; message: string }>
+  fetchProducts: () => Promise<void>
+  
 }
 
 export const useProductStore = create<ProductStore>(set => ({
@@ -31,4 +34,10 @@ export const useProductStore = create<ProductStore>(set => ({
     set(state => ({ products: [...state.products, data.data] }))
     return { success: true, message: 'Product created successfully' }
   },
+  fetchProducts: async () => {
+    const response = await fetch('/api/products')
+    const data = await response.json()
+    set({ products: data.data })
+    console.log('data', data)
+  }
 }))
